@@ -28,13 +28,10 @@ public class UsersController {
     }
 
     
-    
     @PutMapping("/{userId}")
     public Users updatePost(@PathVariable(value = "userId") Long userId,@RequestBody Users userDetails) {
     	Users user = usersRepository.findById(userId).get();
-	    
-	    
-	    user.setUserName(userDetails.getUserName());
+	  	user.setUserName(userDetails.getUserName());
 	  	    
 	    Users updatedUser = usersRepository.save(user);
 	    return updatedUser;
