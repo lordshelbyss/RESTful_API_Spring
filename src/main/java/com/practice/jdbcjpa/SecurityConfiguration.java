@@ -30,11 +30,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //			.roles("User");
 		
 		
-		// MySql authentication
-//		auth.jdbcAuthentication()
-//			.dataSource(dataSource)
-//			.usersByUsernameQuery("select user_name,user_password from users where user_name=?");
-//		
 		// Using userdetailsservice
 		auth.userDetailsService(userDetailsService);	
 		
