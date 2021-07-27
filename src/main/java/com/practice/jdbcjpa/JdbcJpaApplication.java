@@ -2,6 +2,7 @@ package com.practice.jdbcjpa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 
 
 // This is an implementation without spring web dependency 
@@ -34,6 +35,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 //	}
 	
 	@SpringBootApplication
+	@EnableAuthorizationServer
 	public class JdbcJpaApplication{
 		
 		public static void main(String[] args) {
