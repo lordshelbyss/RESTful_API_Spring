@@ -21,14 +21,26 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	UserDetailsService userDetailsService;
 		
+	@Autowired
+	private CustomOAuth2UserService oauthUserService;
+
 	
 // Does authorisation -- role based access 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
 		http.authorizeRequests()
+			.antMatchers("/", "/login", "/oauth/**").permitAll()
 			.anyRequest().authenticated()
-			.and().oauth2Login();
+			.and()
+			.formLogin().permitAll()
+			.and()
+			.oauth2Login()
+			.loginPage("/login")
+			.userInfoEndpoint().userService(oauthUserService);
+		
+		
+		
 	}
 	
 	
