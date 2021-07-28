@@ -20,23 +20,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	UserDetailsService userDetailsService;
-//	@Override
-//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		
-//		// TODO Auto-generated method stub
-////		auth.inMemoryAuthentication()
-////			.withUser("Sam")
-////			.password("Sam")
-////			.roles("User");
-//		
-//		
-//		// Using userdetailsservice
-//		auth.userDetailsService(userDetailsService);	
-//		
-//			
-//	}
-	
-	
+		
 	
 // Does authorisation -- role based access 
 	@Override
