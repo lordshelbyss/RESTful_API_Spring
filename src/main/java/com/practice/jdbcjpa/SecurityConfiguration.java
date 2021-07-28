@@ -64,7 +64,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	            userService.processOAuthPostLogin(oauthUser.getEmail());
 	 
 //	            response.sendRedirect("/list");
-				
+				 
 			}
 	    });
 	   
