@@ -26,7 +26,7 @@ public class Users {
 	@Column(columnDefinition="varchar(1000)",nullable=false)
 	private String userName;
 	
-	@Column(columnDefinition="varchar(255)",nullable=false)
+	@Column(columnDefinition="varchar(255)")
 	private String userPassword;
 	
 	@JsonIgnore
