@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="Users")
-public class Users {
+public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long userId;
@@ -29,11 +29,11 @@ public class Users {
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "user")
-	private Set<Notes> userNotes=new HashSet<>();
+	private Set<Note> userNotes=new HashSet<>();
 	
 	
 
-	public Users() {}
+	public User() {}
 	
 
 	// Getters and setters 	
@@ -62,13 +62,13 @@ public class Users {
 		this.userPassword = userPassword;
 	};
 	
-	public Set<Notes> getUserNotes() {
+	public Set<Note> getUserNotes() {
 		return userNotes;
 	}
 
 
 
-	public void setUserNotes(Set<Notes> userNotes) {
+	public void setUserNotes(Set<Note> userNotes) {
 		this.userNotes = userNotes;
 	}
 	

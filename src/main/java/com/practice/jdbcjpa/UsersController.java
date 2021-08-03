@@ -18,25 +18,25 @@ public class UsersController {
     private UsersRepository usersRepository;
 
     @GetMapping
-    public List<Users> getAllUsers() {
+    public List<User> getAllUsers() {
         return usersRepository.findAll();
     }
 
     @PostMapping
-    public Users createNewUser(@RequestBody Users user) {
+    public User createNewUser(@RequestBody User user) {
         return usersRepository.save(user);
     }
 
     
     
     @PutMapping("/{userId}")
-    public Users updatePost(@PathVariable(value = "userId") Long userId,@RequestBody Users userDetails) {
-    	Users user = usersRepository.findById(userId).get();
+    public User updatePost(@PathVariable(value = "userId") Long userId,@RequestBody User userDetails) {
+    	User user = usersRepository.findById(userId).get();
 	    
 	    
 	    user.setUserName(userDetails.getUserName());
 	  	    
-	    Users updatedUser = usersRepository.save(user);
+	    User updatedUser = usersRepository.save(user);
 	    return updatedUser;
     }
     

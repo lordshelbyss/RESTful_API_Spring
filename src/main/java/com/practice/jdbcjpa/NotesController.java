@@ -1,8 +1,7 @@
 package com.practice.jdbcjpa;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,28 +20,38 @@ public class NotesController {
 	@Autowired
 	UsersRepository usersRepository;
 	
-	@GetMapping("/notes")	
-	public List<Notes> getAllNotes()
+	@Autowired
+	NoteService noteService;
+	
+//	@GetMapping("/notes")	
+//	public List<Note> getAllNotes()
+//	{
+//		return notesRepository.findAll();
+//	}
+	
+	@GetMapping("/notes/{id}")	
+	public Note getNote(@PathVariable Long id)
 	{
-		return notesRepository.findAll();
+		return noteService.getNote(id);
 	}
 	
 	@PostMapping("/notes")
-	public Notes createNewLabel(@RequestBody Notes note)
+	public Note addNote(@RequestBody Note note)
 	{
-		return notesRepository.save(note);
+		return noteService.addNote(note);
 	}
 	
-	
+	@DeleteMapping("/notes/{id}")
+    public void deleteNote(@PathVariable long id) {
+		noteService.deleteNote(id);
+		return;
+    }
 	
 	// Assign note to a user 
 	@PutMapping("/users/{userId}/notes/{noteId}")
-	public Notes assignNoteLabel(@PathVariable Long noteId,@PathVariable Long userId)
-	{
-		Notes note=notesRepository.findById(noteId).get();
-		Users user=usersRepository.findById(userId).get();
-		note.assignUser(user);
-		return notesRepository.save(note);
+	public Note assignNoteLabel(@PathVariable Long noteId,@PathVariable Long userId)
+	{	
+		return noteService.assignNoteLabel(noteId,userId);
 	}
 	
 	

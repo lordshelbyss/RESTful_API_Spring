@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Labels")
-public class Labels {
+public class Label {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long labelId;
@@ -28,15 +28,15 @@ public class Labels {
 		
 	@ManyToMany
 	@JoinTable(name="labels_notes",joinColumns=@JoinColumn(name="label_id"),inverseJoinColumns=@JoinColumn(name="note_id"))
-	private Set<Notes> notes=new HashSet<>();
+	private Set<Note> notes=new HashSet<>();
 	
 
-	public Set<Notes> getNotes() {
+	public Set<Note> getNotes() {
 		return notes;
 	}
 
 
-	public void setNotes(Set<Notes> notes) {
+	public void setNotes(Set<Note> notes) {
 		this.notes = notes;
 	}
 
@@ -60,7 +60,7 @@ public class Labels {
 	}
 
 
-	public void assignNote(Notes note) {
+	public void assignNote(Note note) {
 		// TODO Auto-generated method stub
 		notes.add(note);
 	}

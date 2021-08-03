@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="Notes")
-public class Notes {
+public class Note {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -36,25 +36,25 @@ public class Notes {
 	// Write in documentation 
 	@JsonIgnore
 	@ManyToMany(mappedBy = "notes")
-	private Set<Labels> labels=new HashSet<>();
+	private Set<Label> labels=new HashSet<>();
 	
 	// Explore 
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="user_id",referencedColumnName = "userId")
-	private Users user;
+	private User user;
 	
 
-	public Notes() {};
+	public Note() {};
 	
 	
 	// Getters and Setters 
 	
-	public Users getUser() {
+	public User getUser() {
 		return user;
 	}
 
 
-	public void setUser(Users user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 
@@ -90,7 +90,7 @@ public class Notes {
 	}
 
 
-	public void assignUser(Users user) {
+	public void assignUser(User user) {
 		// TODO Auto-generated method stub
 		this.user=user;
 	}

@@ -23,13 +23,13 @@ public class LabelsController {
 	
 	
 	@GetMapping
-	public List<Labels> getAllLabels()
+	public List<Label> getAllLabels()
 	{
 		return labelsRepository.findAll();
 	}
 	
 	@PostMapping
-	public Labels createNewLabel(@RequestBody Labels label)
+	public Label createNewLabel(@RequestBody Label label)
 	{
 		return labelsRepository.save(label);
 	}
@@ -37,10 +37,10 @@ public class LabelsController {
 	
 	// Assigning label to a note 
 	@PutMapping("/{labelId}/notes/{noteId}")
-	public Labels assignNoteLabel(@PathVariable Long labelId,@PathVariable Long noteId)
+	public Label assignNoteLabel(@PathVariable Long labelId,@PathVariable Long noteId)
 	{
-		Labels label=labelsRepository.findById(labelId).get();
-		Notes note=notesRepository.findById(noteId).get();
+		Label label=labelsRepository.findById(labelId).get();
+		Note note=notesRepository.findById(noteId).get();
 		label.assignNote(note);
 		return labelsRepository.save(label);
 	}
