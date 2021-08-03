@@ -1,5 +1,6 @@
 package com.practice.jdbcjpa;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,8 +19,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="Notes")
-public class Note {
+public class Note implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6013063132226107374L;
+
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long noteId;
